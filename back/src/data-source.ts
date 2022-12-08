@@ -1,18 +1,13 @@
-import 'dotenv/config'
-import 'reflect-metadata'
-import { DataSource } from 'typeorm'
-
-const port = process.env.DB_PORT as number | undefined
+import { DataSource } from "typeorm"
 
 export const AppDataSource = new DataSource({
-	type: 'postgres',
-	url: "postgres://yhrwupqs:x80QRVc2a0KevPDdu-Tbg4ukLmSOLVLb@peanut.db.elephantsql.com/yhrwupqs",
-	name: "yhrwupqs",
-	extra: {
-		max: 1,
-		idleTimeoutMillis: 1000,
-		connectionTimeoutMillis: 1000,
-	},
+    type: "mysql",
+    host: "localhost",
+    port: 3306,
+    username: "root",
+    password: "colar1414",
+    database: "ineedstest",
 	entities: [`${__dirname}/**/entities/*.{ts,js}`],
 	migrations: [`${__dirname}/**/migrations/*.{ts,js}`],
 })
+

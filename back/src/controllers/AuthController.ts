@@ -1,5 +1,5 @@
-import { Request, Response } from "express";
-import { userRepository } from "../repositories/UserRepository";
+/* import { Request, Response } from "express";
+import { userRepository } from "../repositories/AdminRepository";
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 
@@ -42,4 +42,4 @@ export class AuthController{
 
 
 
-}
+} */
