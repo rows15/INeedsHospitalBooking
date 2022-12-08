@@ -1,5 +1,7 @@
 import { Router } from "express";
 import { AdminController } from "./controllers/AdminController";
+import { BookingController } from "./controllers/BookingController";
+import { PatientController } from "./controllers/PatientController";
 /* import { AuthController } from "./controllers/AuthController"; */
 /* import { MovieController } from "./controllers/MovieController";
 import { UserController } from "./controllers/UserController"; */
@@ -11,6 +13,15 @@ const routes = Router();
 
 routes.post('/admint', new AdminController().teste) 
 routes.post('/admin', new AdminController().createUser) 
+
+routes.post('/patient/search', new PatientController().listMedics)
+
+routes.post('/book/new', new BookingController().createResevation)
+routes.get('/book', new BookingController().listAllBookings)
+routes.get('/book/patient/:id', new BookingController().listBookingsByPatient)
+routes.get('/book/medic/:id', new BookingController().listBookingsByMedic)
+routes.get('/book/date/:id', new BookingController().listBookingsByDate)
+
 
 
 

@@ -10,16 +10,45 @@ import { patientRepository } from "../repositories/PatientRepository";
 export class PatientController{
 
         
-    async teste(req: Request, res: Response){
+    async listMedics(req: Request, res: Response){
         const { role,email,tel,name,password,rg,crm,specialty,guardian_id } = req.body
         console.log(role)
         console.log(typeof(role))
         console.log(role === "admin")
+        try{
+        if(!specialty){
+            const allMedics = await medicRepository.find({select:{
+            id: true,
+            email: true,
+            tel: true,
+            name: true,
+            password: true,
+            crm: true,
+            specialty: true
+            }})
+            return res.status(200).json(allMedics)
+        }   const someMedics = await medicRepository.find({select:{
+            id: true,
+            email: true,
+            tel: true,
+            name: true,
+            password: true,
+            crm: true,
+            specialty: true}, where:{specialty: ILike(`%${specialty}%`)}})
+            return res.status(200).json(someMedics)
         
-        
-        return res.status(201).json({message:"Teste"})
+    }catch{
+        return res.status(500).json({message:"Internal server error"})}
     }
 
+
+
+
+
+
+
+
+    
     async teste2(req: Request, res: Response){
         const { role,email,tel,name,password,rg,crm,specialty,guardian_id } = req.body
         if (!role){
