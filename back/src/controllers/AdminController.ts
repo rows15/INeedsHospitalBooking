@@ -17,7 +17,9 @@ export class AdminController{
         console.log(typeof(role))
         console.log(role === "admin")
         
-        
+        console.log( await patientRepository.find({
+            where: {guardian_id:{id:guardian_id}}
+        }))
         return res.status(201).json({message:"Teste"})
     }
 
