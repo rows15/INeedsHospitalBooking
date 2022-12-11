@@ -2,6 +2,7 @@ import { Router } from "express";
 import { AdminController } from "./controllers/AdminController";
 import { BookingController } from "./controllers/BookingController";
 import { PatientController } from "./controllers/PatientController";
+import { MedicController } from "./controllers/MedicController";
 /* import { AuthController } from "./controllers/AuthController"; */
 /* import { MovieController } from "./controllers/MovieController";
 import { UserController } from "./controllers/UserController"; */
@@ -13,8 +14,9 @@ const routes = Router();
 
 routes.post('/admint', new AdminController().teste) 
 routes.post('/admin', new AdminController().createUser) 
+routes.get('/medic/search', new MedicController().listMedics)
+routes.get('/medic/search/:specialty', new MedicController().listMedics)
 
-routes.post('/patient/search', new PatientController().listMedics)
 
 routes.post('/book/new', new BookingController().createResevation)
 routes.get('/book', new BookingController().listAllBookings)

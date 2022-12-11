@@ -19,7 +19,7 @@ export class AdminController{
         
         var patientToEdit = await patientRepository.findOne({where: {id:id}})
         /* patientRepository.update({id},req.body) */
-        patientRepository.update({id},{
+        /* patientRepository.update({id},{
             ...(name && {name:name}),
             ...(email && {email:email}),
             ...(tel && {tel:tel}),
@@ -28,12 +28,13 @@ export class AdminController{
             ...(rg && {rg:rg}),
             ...(guardian_id && {guardian_id:()=>guardian_id})
 
-        })
+        }) */
         
         /* patientRepository.update({id},{guardian_id:()=>guardian_id}) */
 
         console.log(patientToEdit)
-        return res.status(201).json({message:"Teste"})
+        console.log("testei")
+        return res.status(201).json(patientToEdit)
     }
 
     async editUser(req: Request, res: Response){
