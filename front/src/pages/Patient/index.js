@@ -11,7 +11,7 @@ const Patient = () => {
     useEffect(() => {
         
         callApiListAllMedics();
-        callApiListBookingsBuPacientId();
+        callApiListBookingsByPacientId();
         
       }, []);
     
@@ -24,7 +24,7 @@ const Patient = () => {
           
         } catch (error) {}
       }
-    async function callApiListBookingsBuPacientId() {
+    async function callApiListBookingsByPacientId() {
         try {
             const URL = `/book/patient/${3}`;
             const response = await api.get(URL);

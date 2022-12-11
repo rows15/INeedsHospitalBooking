@@ -13,12 +13,14 @@ const routes = Router();
 
 
 routes.post('/admint', new AdminController().teste) 
-routes.post('/admin', new AdminController().createUser) 
+routes.post('/admin/create', new AdminController().createUser) 
+routes.put('/admin/edit', new AdminController().editUser) 
 routes.get('/medic/search', new MedicController().listMedics)
 routes.get('/medic/search/:specialty', new MedicController().listMedics)
 
 
 routes.post('/book/new', new BookingController().createResevation)
+routes.delete('/book/:id', new BookingController().deleteBooking)
 routes.get('/book', new BookingController().listAllBookings)
 routes.get('/book/patient/:id', new BookingController().listBookingsByPatient)
 routes.get('/book/medic/:id', new BookingController().listBookingsByMedic)

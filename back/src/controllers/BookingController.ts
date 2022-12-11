@@ -131,6 +131,36 @@ export class BookingController{
     }
     
 
+    async deleteBooking(req: Request, res: Response){
+        var {id} = req.params
+        var numberId = Number(id)
+        
+        if (!id){
+            return res.status(400).json({message:"Id needs to be defined"})
+        }
+        
+                try{
+                    const findBooking = await bookingRepository.findOne({
+                        where:{
+                        id : numberId
+                    }})
+                    if (!findBooking){
+                        
+                            return res.status(404).json({message:"Booking Not Found"})
+                        }
+                        
+                    
+                    bookingRepository.remove(findBooking)
+                    
+                    return res.status(204)
+                    
+                    
+        
+                } catch(error){
+                    console.log(error)
+                    return res.status(500).json({message:"Internal server error"})
+                }
     
+    }
 
 }
