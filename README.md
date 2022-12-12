@@ -42,3 +42,19 @@ DB:
 	-Cadastro de pacientes e médicos (bulk ou individual) (E CRUD)
 	-Aceita os pedidos de chat de pacientes
 	-Remarcar ou Cancelar
+
+
+ How to Run>
+	-clone repository
+	-open back project folder on the terminal
+	-run ('npm install')
+	-config .env file with your database connection
+	-run ('npm run migration:generate')
+	-run ('npm run migration:run') // Sets up the Db
+	-run ('npm run dev') // Starts the backEnd server
+	-open front project folder on the terminal
+	-run ('npm install')
+	-config /src/services/api.js with your backend host ip and port
+	-run ('npm start')
+	
+

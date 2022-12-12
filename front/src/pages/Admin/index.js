@@ -5,6 +5,7 @@ import React, { useState, useEffect, createContext } from 'react';
 import AdminMedicDataHandler from '../../assets/AdminMedicDataHandler/index.js';
 import "./styles.css"
 import AdminBookingDataHandler from '../../assets/AdminBookingHandler/index.js';
+import { useNavigate } from 'react-router';
 
 const Admin = () => {
     const [medics, setMedics] = useState([]);
@@ -12,11 +13,23 @@ const Admin = () => {
     const [reload, setReload] = useState()
     useEffect(() => {
         
-        
+      estaLogado()
         
         
       }, []);
-    
+      const navigate = useNavigate();
+      
+  
+      function estaLogado() {
+        try {
+          let user = JSON.parse(localStorage.getItem('signed'));
+          if (!user){navigate('/')}
+          
+        } catch (error) { 
+          
+        }
+      }
+      
     async function callApiListAllMedics() {
         try {
           const URL = `/medic/search`;
@@ -80,10 +93,7 @@ const Admin = () => {
             
         } catch (error) {}
     }
-    const handleReload =() =>{
-        console.log(medics)
-        setReload(!reload)
-    }
+    
     /* const handleChangeMedicList = (value) =>{
         switch (value){
             case "1": 
@@ -101,6 +111,7 @@ const Admin = () => {
   return (
     <div id='page-container'>
       <title>Admin Page</title>
+      
       <p>Admin page</p>
       <div>List Medics</div>
       <button onClick={() => callApiListAllMedics()} value="1">All medics</button> <button onClick={() => callApiListMedicsBySpecialty(document.getElementById('admin-input-medic-specialty').value)} value="2">Search by specialty</button> <input type='text' id="admin-input-medic-specialty"></input> <button onClick={() => setMedics([])} value="3">Clear List</button>

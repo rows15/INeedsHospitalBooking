@@ -7,6 +7,7 @@ import {
   Navigate,
   useParams,
 } from 'react-router-dom';
+import Header from '../component/Header';
 
 /* import Header from '../component/Header/Header';
 import Panel from '../pages/Panel';
@@ -42,7 +43,7 @@ const Paginas = () => {
   return (
     <BrowserRouter>
       {/* <AuthProvider> */}
-        {/* <Header /> */}
+        <Header />
         <Routes>
           <Route path='/' element={<Homepage />} />
           <Route path='/user/patient' element={< Patient />} />

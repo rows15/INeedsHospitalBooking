@@ -87,11 +87,7 @@ export class AdminController{
                 return res.status(404).json({message:"Role not found"})
     
     
-            }
-    
-    
-    
-    
+            }    
     }
 
 

@@ -163,4 +163,52 @@ export class BookingController{
     
     }
 
+    async editBookingDate(req: Request, res: Response){
+        const { id,initialDate } = req.body
+        
+        
+        if (!id){
+            return res.status(400).json({message:"Id needs to be defined"})
+        }
+
+                try{
+                    const findBooking = await bookingRepository.findOne({
+                        where:{
+                        id : id
+                    }})
+                    if (!findBooking){
+                        
+                            return res.status(404).json({message:"Booking Not Found"})
+                        }
+
+                    var finalDate = new Date(initialDate)
+                    finalDate.setHours(finalDate.getHours()+1)
+                        
+                    bookingRepository.update({id},{
+                        ...(initialDate && {initialDate: new Date(initialDate)}),
+                        ...(finalDate && {finalDate:finalDate})
+
+                        })
+                    
+                    
+                    return res.status(201).json({message:"Booking Edited"})
+                    
+                    
+        
+                } catch(error){
+                    console.log(error)
+                    return res.status(500).json({message:"Internal server error"})
+                }
+                    
+                    
+                     
+                    
+                    
+        
+                
+    
+    
+             
+    }
+
 }

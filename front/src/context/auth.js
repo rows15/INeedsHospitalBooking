@@ -12,23 +12,32 @@ import api from '../services/api.js';
 
 export const AuthContext = createContext();
 /* const navigate = useNavigate(); */
-export const Test = (email, senha,role)=> {
-    /* const navigate = useNavigate(); */
+
+export async function callApiSimpleAuth(email, password,role) {
+    try {
+      const URL = `/simpleauth`;
+      const response = await api.post(URL,{
+        role: role,
+        email: email,
+        password: password
+    });
+    localStorage.setItem('signed', JSON.stringify({auth: true, id: response.data.id, role:role,name:response.data.name}));
     
-    /* const handleNavigate = () =>{
-        navigate(urlToGo);
-    } */
-    /* api.post('/admint',{
-        role: 'admin',
-        id: '3'
-    })
-    console.log("testei") */
-    console.log(email,senha,role)
     return true
-    /* return navigate(urlToGo) */
-    
-    
-}
+      /* if (response.data.authorization){console.log("Autorizado pela api")} */
+      
+      
+    } catch (error) {
+    return false}
+  }
+
+
+/* export const async Auth = (email, password,role)=> {
+    var teste = await callApiSimpleAuth(email,password,role)
+   
+} */
+
+
 export const AuthProvider = ({ children }) => {
             const login = (email, senha,role) => {
 
