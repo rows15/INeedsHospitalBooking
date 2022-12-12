@@ -21,6 +21,9 @@ export async function callApiSimpleAuth(email, password,role) {
         email: email,
         password: password
     });
+    if (!response.data.id){
+        return false
+    }
     localStorage.setItem('signed', JSON.stringify({auth: true, id: response.data.id, role:role,name:response.data.name}));
     
     return true

@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useContext } from "react";
 import { AuthContext, callApiSimpleAuth } from "../../../src/context/auth";
 import { useNavigate } from 'react-router';
-
+import "./styles.css"
+import  {Button} from 'react-bootstrap';
 
 
 
@@ -53,13 +54,13 @@ const Login = () => {
     };
     return (
 
-        <div id="login">
+        <div id="login" className="container-login">
             <h1 className="title">Login</h1>
 
             <form className="form" onSubmit={handleSubmit}>
                 <div className="field">
-                    <label>
-                        Login Role
+                    <label className="login-label">
+                        Role
                     </label>
                     <select onChange={(e) => setRole(e.target.value)}>
                         <option value="admin">Admin</option>
@@ -67,7 +68,7 @@ const Login = () => {
                         <option selected value="patient">Patient</option>
 
                     </select> <br />
-                    <label htmlFor="email">E-mail</label>
+                    <label className="login-label" htmlFor="email">E-mail</label>
                     <input
                         type="email"
                         name="email"
@@ -78,7 +79,7 @@ const Login = () => {
                 </div>
 
                 <div className="field">
-                    <label htmlFor="password">Password</label>
+                    <label className="login-label" htmlFor="password">Password</label>
                     <input
                         type="password"
                         name="password"
@@ -88,7 +89,7 @@ const Login = () => {
                     />
                 </div>
                 <div className="actions">
-                    <button type="submit">Enter</button>
+                    <button className="submit-login" variant="primary" type="submit">Enter</button>
                 </div>
 
 

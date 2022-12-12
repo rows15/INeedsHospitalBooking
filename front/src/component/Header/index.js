@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router';
-
+import "./styles.css"
 
 
 const Header = () => {
@@ -31,10 +31,10 @@ const Header = () => {
               
             </>
           ) : (
-            <>
-              <div className='logIn'>Bem vindo, {estaLogado()}!</div>
-              <button onClick={logout}>Logout</button>
-            </>
+            <div className='container-header'>
+              <div className='logIn'><h3>Welcome, {estaLogado()}!</h3></div>
+              <button className="button-logout" onClick={logout}>Logout</button>
+            </div>
           )}
         </div>
       </div>

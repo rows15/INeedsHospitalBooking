@@ -4,3 +4,18 @@
 .patient-mediclist-container{
     border:1px solid black;
     }
+
+
+.pacient-container{
+    margin-top: 100px;
+    padding: 20px;
+    border-radius: 10px;
+    margin-left: 20%;
+    margin-right: 20%;
+    max-width: 800px;
+    background-color: white;
+}
+.inline-div{
+    display: flex;
+    padding-bottom: 10px;
+}

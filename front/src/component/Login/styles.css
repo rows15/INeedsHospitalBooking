@@ -1,0 +1,62 @@
+body{
+    background: #333;;
+}
+
+.container-login{
+    background: #fff;
+    margin-left: 30%;    
+    margin-top: 20%;
+    margin-right: 30%;
+    border-radius: 10px;
+    padding:20px;
+    box-shadow: 6px 6px 6px 6px rgba(0,0,0,0.5);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.title{
+    justify-content: center;
+    display: flex;
+}
+
+.form{
+    justify-content: flex-start;
+    
+    display: block;
+}
+
+.login-label{
+    font-size: 13pt;
+    margin-bottom: 3px;
+    margin-top: 15px;
+}
+
+.field{
+    min-height: 70px;
+    flex-direction: column;
+    display: flex;
+}
+
+.actions{
+    justify-content: center;
+    display: flex;
+}
+
+
+.submit-login {
+    transition-duration: 0.4s;
+    border-radius: 8px;
+    background-color: #4CAF50;
+    font-size: 24px;
+    padding: 10px 30px;
+    color: white;
+  }
+  
+.submit-login:hover {
+    background-color: #80db83; /* Green */
+    
+  
+  }
+
+  input{
+    border-radius: 5px;
+  }
