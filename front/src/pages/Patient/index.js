@@ -45,6 +45,16 @@ const Patient = () => {
           
         } catch (error) {}
       }
+
+      async function callApiListMedicsBySpecialty(specialty) {
+        try {
+          const URL = `/medic/search/${specialty}`;
+          const response = await api.get(URL);
+          setMedics(response.data);
+          
+          
+        } catch (error) {}
+      }
     async function callApiListBookingsByPacientId() {
         try {
             const URL = `/book/patient/${getId()}`;
@@ -57,7 +67,7 @@ const Patient = () => {
     }
     
     const handleBooking = (medic_id) =>{
-      const initialDate = document.getElementById('admin-input-booking-date').value
+      const initialDate = document.getElementById('patient-input-booking-date').value
       try {
         const URL = `/book/new`;
         
@@ -70,17 +80,18 @@ const Patient = () => {
         
         
         
+        
     } catch (error) {}
     }
     
 
 
   return (
-    <div className="pacient-container">
+    <div className="patient-container">
       <title>Patient Page</title>
       <p>Patient page</p>
       <div>List all Reservations</div>
-      <button onClick={() => callApiListBookingsByPacientId()}>List Reservations</button><button onClick={() => setBookings([])}>Clear List</button>
+      <button onClick={() => callApiListBookingsByPacientId()}>List Reservations</button><button onClick={() => setBookings([])}>Hide List</button>
       {console.log(bookings)}
       {bookings.sort((a,b) => a.initialDate > b.initialDate).map(item => (
       <div className='patient-bookings-container' key={item.id}>
@@ -91,7 +102,11 @@ const Patient = () => {
       </div>
       ))}
       <div>List medics by specialty</div>
-      <button onClick={() => callApiListAllMedics()}>List Medics</button><button onClick={() => setMedics([])}>Clear List</button>
+      <button onClick={() => callApiListAllMedics()}>List All Medics</button>
+      <button onClick={() => callApiListMedicsBySpecialty(document.getElementById('patient-input-medic-specialty').value)} value="2">Search by specialty</button> 
+      <input type='text' id="patient-input-medic-specialty"></input>
+      
+      <button onClick={() => setMedics([])}>Hide List</button>
       {/*############# Criar check se existem médicos############## */}
       {medics.sort((a,b) => a.specialty > b.specialty).map(item => (
       <div className='patient-mediclist-container' key={item.id}>
@@ -100,7 +115,7 @@ const Patient = () => {
       <p>Specialty: {item.specialty}</p>
       <div className='inline-div'>
         <p>Create Reservation:</p> 
-        <input type='text' id="admin-input-booking-date" placeholder='Format: yyyy-MM-dd hh:mm:ss'></input> 
+        <input type='text' id="patient-input-booking-date" placeholder='Format: yyyy-MM-dd hh:mm:ss'></input> 
         <button onClick={() => handleBooking(item.id)}>Book</button>
       </div>
       </div>
